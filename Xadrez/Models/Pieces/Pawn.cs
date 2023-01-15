@@ -3,28 +3,44 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xadrez.Util;
 
 namespace Xadrez.Models.Pieces
 {
     public class Pawn : Piece
     {
-        public override bool Movement(string position)
+        public Pawn(int column, int Line, PiecesColors color) : base(column, Line, color)
         {
-            int line = int.Parse(position.Split(' ')[0]);
-            int column = int.Parse(position.Split(' ')[1]);
+            Simbol = 'P';
+        }
+
+        public override bool CheckMovement(int newLine, int newColumn, Piece[,] pieces)
+        {
 
             if (this.Color == Util.PiecesColors.White)
             {
-                if (column != int.Parse(Position.Split(' ')[1]))
+                if (pieces[newLine + 1, newColumn] != null && pieces[newLine + 1, newColumn].Simbol != 'n')
                 {
-                    if (column == int.Parse(Position.Split(' ')[1]) -1)
-                    {
-                        return true;
-                    }
+                    return false;
                 }
+                return true;
 
             }
-            return false;
+            else if (this.Color == Util.PiecesColors.Black)
+            {
+                if (pieces[newLine - 1, newColumn] != null && pieces[newLine + 1, newColumn].Simbol != 'n')
+                {
+                    return false;
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
         }
+
+        
     }
 }

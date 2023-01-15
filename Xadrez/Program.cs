@@ -1,5 +1,6 @@
 ﻿using System;
 using Xadrez.Models;
+using Xadrez.Models.Pieces;
 
 namespace Xadez
 {
@@ -11,9 +12,13 @@ namespace Xadez
             board.StartBoard();
             board.ShowBoard();
 
-            Piece piece = new Piece();
-            piece.Color = Xadrez.Util.PiecesColors.White;
-            Console.WriteLine(piece.Color);
+            //Pawn piece = new Pawn();
+            //piece.Color = Xadrez.Util.PiecesColors.White;
+            //Console.WriteLine(piece.Color);
+            board.MovePiece(2, 1, board.SelectPiece(1,1));
+            Console.ReadKey();
+            board.ShowBoard();
+            Console.ReadKey();
         }
     }
 }

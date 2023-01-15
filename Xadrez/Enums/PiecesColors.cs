@@ -9,6 +9,7 @@ namespace Xadrez.Util
     public enum PiecesColors
     {
         White,
+        Null,
         Black
     }
 }
