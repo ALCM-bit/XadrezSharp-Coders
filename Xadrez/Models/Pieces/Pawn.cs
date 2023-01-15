@@ -23,14 +23,23 @@ namespace Xadrez.Models.Pieces
                 {
                     return false;
                 }
+                if ((pieces[newLine + 1, newColumn -1] != null && pieces[newLine + 1, newColumn - 1].Color != this.Color) 
+                    || (pieces[newLine + 1, newColumn + 1] != null && pieces[newLine + 1, newColumn + 1].Color != this.Color))
+                {
+                    return true;
+                }
                 return true;
 
             }
             else if (this.Color == Util.PiecesColors.Black)
             {
-                if (pieces[newLine - 1, newColumn] != null && pieces[newLine + 1, newColumn].Simbol != 'n')
+                if (pieces[newLine - 1, newColumn] != null && pieces[newLine - 1, newColumn].Simbol != 'n')
                 {
                     return false;
+                }
+                if (pieces[newLine - 1, newColumn - 1] != null || pieces[newLine - 1, newColumn + 1] != null)
+                {
+                    return true;
                 }
                 return true;
             }

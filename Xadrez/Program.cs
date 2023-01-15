@@ -15,8 +15,9 @@ namespace Xadez
             //Pawn piece = new Pawn();
             //piece.Color = Xadrez.Util.PiecesColors.White;
             //Console.WriteLine(piece.Color);
-            board.MovePiece(2, 1, board.SelectPiece(1,1));
+            board.MovePiece(2, 0, board.SelectPiece(1,1));
             Console.ReadKey();
+            board.MovePiece(6, 0, board.SelectPiece(7, 0));
             board.ShowBoard();
             Console.ReadKey();
         }
