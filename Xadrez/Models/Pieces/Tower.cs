@@ -9,82 +9,74 @@ namespace Xadrez.Models.Pieces
 {
     public class Tower : Piece
     {
-        public Tower(int column, int Line, PiecesColors color) : base(column, Line, color)
+        public Tower(int line, int column, PiecesColors color) : base(line, column, color)
         {
             Simbol = 'T';
         }
         public override bool CheckMovement(int newLine, int newColumn, Piece[,] pieces)
         {
-            if (this.Color == PiecesColors.White)
+            if (newLine != this.Line && newColumn == this.Column)
             {
-                if (pieces[newLine, newColumn].Line == newLine)
+                if (newLine > this.Line && newLine <= 7)
                 {
-                    for (int i = 0; i < newLine - 1; i++)
+                    for (int i = this.Line + 1; i < newLine - 1; i++)
                     {
-                        if (pieces[this.Line, i].Simbol != 'n')
+                        if (pieces[i, newColumn].Simbol != 'n')
                         {
                             return false;
                         }
                     }
-                    if (pieces[newLine, newColumn].Color != this.Color)
-                    {
-                        return true;
-                    }
-                    return false;
                 }
-                if (pieces[newLine, newColumn].Column == newColumn)
+                if (newLine < this.Line && newLine >= 0)
                 {
-                    for (int i = 0; i < newColumn - 1; i++)
+                    for (int i = this.Line -1; i < newLine + 1; i++)
                     {
-                        if (pieces[this.Line, i].Simbol != 'n')
+                        if (pieces[i, newColumn].Simbol != 'n')
                         {
                             return false;
                         }
                     }
-                    if (pieces[newLine, newColumn].Color != this.Color)
-                    {
-                        return true;
-                    }
-
+                }      
+                if (pieces[newLine, newColumn].Color != this.Color || pieces[newLine, newColumn].Color == PiecesColors.Null)
+                {
+                    return true;
                 }
-
+                return false;
             }
-            if (this.Color == PiecesColors.Black)
+            else if (this.Line == newLine && this.Column != newColumn)
             {
-                if (pieces[newLine, newColumn].Line == newLine)
+                if (newColumn > this.Column && newColumn <= 7)
                 {
-                    for (int i = 0; i < newLine + 1; i++)
+                    for (int i = this.Column + 1; i < newColumn - 1; i++)
+                    {
+                        if (pieces[this.Line, i].Color != PiecesColors.Null)
+                        {
+                            return false;
+                        }
+                    }
+                }
+                if (newColumn < this.Column && newColumn >= 0)
+                {
+                    for (int i = this.Column -1; i < newColumn + 1; i++)
                     {
                         if (pieces[this.Line, i].Simbol != 'n')
                         {
                             return false;
                         }
                     }
-                    if (pieces[newLine, newColumn].Color != this.Color)
-                    {
-                        return true;
-                    }
-                    return false;
                 }
-                if (pieces[newLine, newColumn].Column == newColumn)
+                if (pieces[newLine, newColumn].Color != this.Color || pieces[newLine, newColumn].Color == PiecesColors.Null)
                 {
-                    for (int i = 0; i < newColumn + 1; i++)
-                    {
-                        if (pieces[this.Line, i].Simbol != 'n')
-                        {
-                            return false;
-                        }
-                    }
-                    if (pieces[newLine, newColumn].Color != this.Color)
-                    {
-                        return true;
-                    }
-
+                    return true;
                 }
-
+                return false;
             }
+            else
+                return true;
 
-            return false;
         }
+
+
     }
 }
+

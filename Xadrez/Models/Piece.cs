@@ -19,10 +19,10 @@ namespace Xadrez.Models
         {
 
         }
-        public Piece(int Line, int column, PiecesColors color)
+        public Piece(int line, int column, PiecesColors color)
         {
+            this.Line = line;
             this.Column = column;
-            this.Line = Line;
             this.Color = color;
         }
         public abstract bool CheckMovement(int newLine, int newColumn, Piece[,] pieces);

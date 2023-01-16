@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using Xadrez.Models.Pieces;
 
 
@@ -23,7 +25,7 @@ namespace Xadrez.Models
             }
             _board[0, 1] = new Pieces.Pawn(1, 0, Util.PiecesColors.White);
             _board[1, 1] = new Pieces.Pawn(1, 1, Util.PiecesColors.White);
-            _board[2, 0] = new Pieces.Pawn(2, 0, Util.PiecesColors.White);
+            _board[2, 0] = new Pieces.Tower(2, 0, Util.PiecesColors.White);
 
             _board[7, 0] = new Pieces.Pawn(7, 0, Util.PiecesColors.Black);
             _board[6, 0] = new Pieces.Pawn(6, 0, Util.PiecesColors.Black);
@@ -45,13 +47,21 @@ namespace Xadrez.Models
         }
         public Piece SelectPiece(int line, int column)
         {
-            if (_board[line, column].CheckMovement(line, column, _board) == false)
+
+            Console.Write("Digite a Linha do destino: ");
+            int newLine = int.Parse(Console.ReadLine());
+            Console.Write("Digite a Coluna do destino: ");
+            int newColumn = int.Parse(Console.ReadLine());
+
+            if (_board[line, column].CheckMovement(newLine, newColumn, _board) == false)
             {
                 Console.WriteLine("Peça inválida");
                 return null;
             }
             else
             {
+                _board[line, column].Line = newLine;
+                _board[line, column].Column = newColumn;
                 return _board[line, column];
             }
         }
@@ -60,9 +70,8 @@ namespace Xadrez.Models
         {
             if (piece != null)
             {
-                _board[piece.Line, piece.Column] = new BlankSpace(piece.Line, piece.Column);
-                piece.Line = line; piece.Column = column;
-                _board[line, column] = piece;
+                _board[line, column] = new BlankSpace(line, column);
+                _board[piece.Line, piece.Column] = piece;
             }
             
         }

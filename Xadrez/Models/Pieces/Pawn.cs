@@ -9,7 +9,7 @@ namespace Xadrez.Models.Pieces
 {
     public class Pawn : Piece
     {
-        public Pawn(int column, int Line, PiecesColors color) : base(column, Line, color)
+        public Pawn( int line, int column, PiecesColors color) : base(column, line, color)
         {
             Simbol = 'P';
         }
@@ -37,7 +37,7 @@ namespace Xadrez.Models.Pieces
                 {
                     return false;
                 }
-                if (pieces[newLine - 1, newColumn - 1] != null || pieces[newLine - 1, newColumn + 1] != null)
+                if (pieces[newLine - 1, newColumn + 1] != null && pieces[newLine - 1, newColumn + 1].Color != this.Color)
                 {
                     return true;
                 }
