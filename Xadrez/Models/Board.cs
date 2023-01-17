@@ -29,6 +29,7 @@ namespace Xadrez.Models
 
             _board[7, 0] = new Pieces.Pawn(7, 0, Util.PiecesColors.Black);
             _board[6, 0] = new Pieces.Pawn(6, 0, Util.PiecesColors.Black);
+            _board[3, 3] = new Pieces.Bishop(3, 3, Util.PiecesColors.Black);
         }
         public void ShowBoard()
         {

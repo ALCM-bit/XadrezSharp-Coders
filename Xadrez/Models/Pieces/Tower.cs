@@ -71,8 +71,7 @@ namespace Xadrez.Models.Pieces
                 }
                 return false;
             }
-            else
-                return true;
+            return false;
 
         }
 
