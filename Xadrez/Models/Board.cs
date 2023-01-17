@@ -23,13 +23,12 @@ namespace Xadrez.Models
                     _board[i, j] = new BlankSpace(j,i);
                 }
             }
-            _board[0, 1] = new Pieces.Pawn(1, 0, Util.PiecesColors.White);
-            _board[1, 1] = new Pieces.Pawn(1, 1, Util.PiecesColors.White);
-            _board[2, 0] = new Pieces.Tower(2, 0, Util.PiecesColors.White);
-
-            _board[7, 0] = new Pieces.Pawn(7, 0, Util.PiecesColors.Black);
-            _board[6, 0] = new Pieces.Pawn(6, 0, Util.PiecesColors.Black);
-            _board[3, 3] = new Pieces.Bishop(3, 3, Util.PiecesColors.Black);
+            PlacePawns();
+            PlaceBishops();
+            PlaceTowers();
+            PlaceHorses();
+            PlaceQueens();
+            PlaceKings();
         }
         public void ShowBoard()
         {
@@ -77,5 +76,75 @@ namespace Xadrez.Models
             
         }
 
+        public void PlacePawns() 
+        {
+            //White
+            _board[1, 0] = new Pieces.Pawn(1, 0, Util.PiecesColors.White);
+            _board[1, 1] = new Pieces.Pawn(1, 1, Util.PiecesColors.White);
+            _board[1, 2] = new Pieces.Pawn(1, 2, Util.PiecesColors.White);
+            _board[1, 3] = new Pieces.Pawn(1, 3, Util.PiecesColors.White);
+            _board[1, 4] = new Pieces.Pawn(1, 4, Util.PiecesColors.White);
+            _board[1, 5] = new Pieces.Pawn(1, 5, Util.PiecesColors.White);
+            _board[1, 6] = new Pieces.Pawn(1, 6, Util.PiecesColors.White);
+            _board[1, 7] = new Pieces.Pawn(1, 7, Util.PiecesColors.White);
+
+            //black
+            _board[6, 0] = new Pieces.Pawn(1, 0, Util.PiecesColors.Black);
+            _board[6, 1] = new Pieces.Pawn(1, 1, Util.PiecesColors.Black);
+            _board[6, 2] = new Pieces.Pawn(1, 2, Util.PiecesColors.Black);
+            _board[6, 3] = new Pieces.Pawn(1, 3, Util.PiecesColors.Black);
+            _board[6, 4] = new Pieces.Pawn(1, 4, Util.PiecesColors.Black);
+            _board[6, 5] = new Pieces.Pawn(1, 5, Util.PiecesColors.Black);
+            _board[6, 6] = new Pieces.Pawn(1, 6, Util.PiecesColors.Black);
+            _board[6, 7] = new Pieces.Pawn(1, 7, Util.PiecesColors.Black);
+
+        }
+        public void PlaceTowers()
+        {
+            //White
+            _board[0, 0] = new Pieces.Tower(0, 0, Util.PiecesColors.White);
+            _board[0, 7] = new Pieces.Tower(0, 7, Util.PiecesColors.White);
+
+            //Black
+            _board[7, 0] = new Pieces.Tower(7, 0, Util.PiecesColors.Black);
+            _board[7, 7] = new Pieces.Tower(3, 3, Util.PiecesColors.Black);
+        }
+        public void PlaceBishops()
+        {
+            //White
+            _board[0, 2] = new Pieces.Bishop(0, 2, Util.PiecesColors.White);
+            _board[0, 5] = new Pieces.Bishop(0, 5, Util.PiecesColors.White);
+
+            //Black
+            _board[7, 2] = new Pieces.Bishop(7, 2, Util.PiecesColors.Black);
+            _board[7, 5] = new Pieces.Bishop(7, 5, Util.PiecesColors.Black);
+        }
+        public void PlaceHorses()
+        {
+            //White
+            _board[0, 1] = new Pieces.Horse(0, 1, Util.PiecesColors.White);
+            _board[0, 6] = new Pieces.Horse(0, 6, Util.PiecesColors.White);
+
+            //Black
+            _board[7, 1] = new Pieces.Horse(7, 1, Util.PiecesColors.Black);
+            _board[7, 6] = new Pieces.Horse(7, 6, Util.PiecesColors.Black);
+        }
+        public void PlaceQueens() 
+        {
+            //White
+            _board[0, 3] = new Pieces.Queen(0, 3, Util.PiecesColors.White);
+            
+            //Black
+            _board[7, 3] = new Pieces.Queen(7, 3, Util.PiecesColors.Black);
+            
+        }
+        public void PlaceKings()
+        {
+            //White
+            _board[0, 4] = new Pieces.King(0, 4, Util.PiecesColors.White);
+
+            //Black
+            _board[7, 4] = new Pieces.King(7, 4, Util.PiecesColors.Black);
+        }
     }
 }

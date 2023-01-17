@@ -7,19 +7,15 @@ using Xadrez.Util;
 
 namespace Xadrez.Models.Pieces
 {
-    public class BlankSpace : Piece
+    public class King : Piece
     {
-        public BlankSpace(int line, int column, PiecesColors color) { }
-        public BlankSpace(int column, int line)
+        public King(int line, int column, PiecesColors color) : base(column, line, color)
         {
-            Column = column;
-            Line = line;
-            Color = Util.PiecesColors.Null;
-            Simbol = '-';
+            Simbol = 'K';
         }
         public override bool CheckMovement(int newLine, int newColumn, Piece[,] pieces)
         {
-           return false;
+            throw new NotImplementedException();
         }
     }
 }

@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xadrez.Util;
 
 namespace Xadrez.Models.Pieces
 {
     public class Horse : Piece
     {
+        public Horse(int line, int column, PiecesColors color) : base(column, line, color)
+        {
+            Simbol = 'H';
+        }
         public override bool CheckMovement(int newLine, int newColumn, Piece[,] pieces)
         {
             if ((newLine < 0 || newLine > 7) || (newColumn < 0 || newColumn > 7))
