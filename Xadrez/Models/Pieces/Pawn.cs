@@ -19,7 +19,7 @@ namespace Xadrez.Models.Pieces
 
             if (this.Color == Util.PiecesColors.White)
             {
-                if (pieces[newLine + 1, newColumn] != null && pieces[newLine + 1, newColumn].Simbol != 'n')
+                if (pieces[newLine + 1, newColumn] != null && pieces[newLine + 1, newColumn].Simbol != '-')
                 {
                     return false;
                 }
@@ -33,7 +33,7 @@ namespace Xadrez.Models.Pieces
             }
             else if (this.Color == Util.PiecesColors.Black)
             {
-                if (pieces[newLine - 1, newColumn] != null && pieces[newLine - 1, newColumn].Simbol != 'n')
+                if (pieces[newLine - 1, newColumn] != null && pieces[newLine - 1, newColumn].Simbol != '-')
                 {
                     return false;
                 }

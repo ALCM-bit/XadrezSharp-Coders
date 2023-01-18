@@ -21,7 +21,7 @@ namespace Xadrez.Models.Pieces
                 {
                     for (int i = this.Line + 1; i < newLine - 1; i++)
                     {
-                        if (pieces[i, newColumn].Simbol != 'n')
+                        if (pieces[i, newColumn].Simbol != '-')
                         {
                             return false;
                         }
@@ -31,7 +31,7 @@ namespace Xadrez.Models.Pieces
                 {
                     for (int i = this.Line -1; i < newLine + 1; i++)
                     {
-                        if (pieces[i, newColumn].Simbol != 'n')
+                        if (pieces[i, newColumn].Simbol != '-')
                         {
                             return false;
                         }
