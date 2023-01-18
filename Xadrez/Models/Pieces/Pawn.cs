@@ -30,7 +30,7 @@ namespace Xadrez.Models.Pieces
                     this.FirstMove = false;
                     return true;
                 }
-                if ((this.Line - 1 == newLine))
+                if ((this.Line + 1 == newLine))
                 {
                     if (pieces[newLine, newColumn].Color != PiecesColors.Null)
                     {

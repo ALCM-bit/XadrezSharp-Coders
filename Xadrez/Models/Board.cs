@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using Xadrez.Models.Pieces;
-
+using Xadrez.Util;
 
 namespace Xadrez.Models
 {
@@ -48,10 +48,23 @@ namespace Xadrez.Models
                 Console.Write($"{i}");
                 for (int j = 0; j < 8; j++)
                 {
+                    if (_board[i, j].Color == PiecesColors.White)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                    }
+                    if (_board[i, j].Color == PiecesColors.Black)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                    }
+                    if (_board[i,j].Color == PiecesColors.Null)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                    }
                     Console.Write($"|{_board[i,j].Simbol}|");
                 }
               Console.WriteLine();
             }
+            Console.ForegroundColor = ConsoleColor.White;
         }
         public Piece SelectPiece(int line, int column)
         {
@@ -96,24 +109,24 @@ namespace Xadrez.Models
         public void PlacePawns() 
         {
             //White
-            _board[1, 0] = new Pieces.Pawn(1, 0, Util.PiecesColors.White);
-            _board[1, 1] = new Pieces.Pawn(1, 1, Util.PiecesColors.White);
-            _board[1, 2] = new Pieces.Pawn(1, 2, Util.PiecesColors.White);
-            _board[1, 3] = new Pieces.Pawn(1, 3, Util.PiecesColors.White);
-            _board[1, 4] = new Pieces.Pawn(1, 4, Util.PiecesColors.White);
-            _board[1, 5] = new Pieces.Pawn(1, 5, Util.PiecesColors.White);
-            _board[1, 6] = new Pieces.Pawn(1, 6, Util.PiecesColors.White);
-            _board[1, 7] = new Pieces.Pawn(1, 7, Util.PiecesColors.White);
+            _board[1, 0] = new Pieces.Pawn(1, 0, PiecesColors.White);
+            _board[1, 1] = new Pieces.Pawn(1, 1, PiecesColors.White);
+            _board[1, 2] = new Pieces.Pawn(1, 2, PiecesColors.White);
+            _board[1, 3] = new Pieces.Pawn(1, 3, PiecesColors.White);
+            _board[1, 4] = new Pieces.Pawn(1, 4, PiecesColors.White);
+            _board[1, 5] = new Pieces.Pawn(1, 5, PiecesColors.White);
+            _board[1, 6] = new Pieces.Pawn(1, 6, PiecesColors.White);
+            _board[1, 7] = new Pieces.Pawn(1, 7, PiecesColors.White);
 
             //black
-            _board[6, 0] = new Pieces.Pawn(6, 0, Util.PiecesColors.Black);
-            _board[6, 1] = new Pieces.Pawn(6, 1, Util.PiecesColors.Black);
-            _board[6, 2] = new Pieces.Pawn(6, 2, Util.PiecesColors.Black);
-            _board[6, 3] = new Pieces.Pawn(6, 3, Util.PiecesColors.Black);
-            _board[6, 4] = new Pieces.Pawn(6, 4, Util.PiecesColors.Black);
-            _board[6, 5] = new Pieces.Pawn(6, 5, Util.PiecesColors.Black);
-            _board[6, 6] = new Pieces.Pawn(6, 6, Util.PiecesColors.Black);
-            _board[6, 7] = new Pieces.Pawn(6, 7, Util.PiecesColors.Black);
+            _board[6, 0] = new Pieces.Pawn(6, 0, PiecesColors.Black);
+            _board[6, 1] = new Pieces.Pawn(6, 1, PiecesColors.Black);
+            _board[6, 2] = new Pieces.Pawn(6, 2, PiecesColors.Black);
+            _board[6, 3] = new Pieces.Pawn(6, 3, PiecesColors.Black);
+            _board[6, 4] = new Pieces.Pawn(6, 4, PiecesColors.Black);
+            _board[6, 5] = new Pieces.Pawn(6, 5, PiecesColors.Black);
+            _board[6, 6] = new Pieces.Pawn(6, 6, PiecesColors.Black);
+            _board[6, 7] = new Pieces.Pawn(6, 7, PiecesColors.Black);
 
         }
         public void PlaceTowers()
