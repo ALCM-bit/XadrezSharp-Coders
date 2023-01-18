@@ -15,7 +15,71 @@ namespace Xadrez.Models.Pieces
         }
         public override bool CheckMovement(int newLine, int newColumn, Piece[,] pieces)
         {
-            throw new NotImplementedException();
+            if ((this.Line - 1 == newLine) && (this.Column != newColumn))
+            {
+                if (pieces[newLine, newColumn].Color != this.Color)
+                {
+                    return true;
+                }
+                return false;
+            }
+            if ((this.Line + 1 == newLine) && (this.Column != newColumn))
+            {
+                if (pieces[newLine, newColumn].Color != this.Color)
+                {
+                    return true;
+                }
+                return false;
+            }
+            if ((this.Line == newLine) && (this.Column + 1 == newColumn))
+            {
+                if (pieces[newLine, newColumn].Color != this.Color)
+                {
+                    return true;
+                }
+                return false;
+            }
+            if ((this.Line == newLine) && (this.Column - 1 == newColumn))
+            {
+                if (pieces[newLine, newColumn].Color != this.Color)
+                {
+                    return true;
+                }
+                return false;
+            }
+            if ((this.Line - 1 == newLine) && (this.Column + 1 == newColumn))
+            {
+                if (pieces[newLine, newColumn].Color != this.Color)
+                {
+                    return true;
+                }
+                return false;
+            }
+            if ((this.Line - 1 == newLine) && (this.Column - 1 == newColumn))
+            {
+                if (pieces[newLine, newColumn].Color != this.Color)
+                {
+                    return true;
+                }
+                return false;
+            }
+            if ((this.Line + 1 == newLine) && (this.Column + 1 == newColumn))
+            {
+                if (pieces[newLine, newColumn].Color != this.Color)
+                {
+                    return true;
+                }
+                return false;
+            }
+            if ((this.Line + 1 == newLine) && (this.Column - 1 == newColumn))
+            {
+                if (pieces[newLine, newColumn].Color != this.Color)
+                {
+                    return true;
+                }
+                return false;
+            }
+            return false;
         }
     }
 }

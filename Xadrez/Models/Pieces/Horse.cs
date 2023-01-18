@@ -9,7 +9,7 @@ namespace Xadrez.Models.Pieces
 {
     public class Horse : Piece
     {
-        public Horse(int line, int column, PiecesColors color) : base(column, line, color)
+        public Horse(int line, int column, PiecesColors color) : base(line,column, color)
         {
             Simbol = 'H';
         }
