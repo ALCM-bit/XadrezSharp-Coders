@@ -9,39 +9,98 @@ namespace Xadrez.Models.Pieces
 {
     public class Pawn : Piece
     {
-        public Pawn( int line, int column, PiecesColors color) : base(column, line, color)
+        public bool FirstMove { get; set; }
+        public Pawn(int line, int column, PiecesColors color) : base(line, column, color)
         {
+            FirstMove = true;
             Simbol = 'P';
         }
 
         public override bool CheckMovement(int newLine, int newColumn, Piece[,] pieces)
         {
 
-            if (this.Color == Util.PiecesColors.White)
+            if (this.Color == PiecesColors.White)
             {
-                if (pieces[newLine + 1, newColumn] != null && pieces[newLine + 1, newColumn].Simbol != '-')
+                if ((this.Line +2 == newLine) && (this.FirstMove == true))
                 {
-                    return false;
-                }
-                if ((pieces[newLine + 1, newColumn -1] != null && pieces[newLine + 1, newColumn - 1].Color != this.Color) 
-                    || (pieces[newLine + 1, newColumn + 1] != null && pieces[newLine + 1, newColumn + 1].Color != this.Color))
-                {
+                    if (pieces[newLine, newColumn].Color != PiecesColors.Null)
+                    {
+                        return false;
+                    }
+                    this.FirstMove = false;
                     return true;
                 }
-                return true;
-
+                if ((this.Line - 1 == newLine))
+                {
+                    if (pieces[newLine, newColumn].Color != PiecesColors.Null)
+                    {
+                        return false;
+                    }
+                    this.FirstMove = false;
+                    return true;
+                }
+                //pegar peça a direita
+                if ((this.Line + 1 == newLine) && (this.Column + 1 == newColumn))
+                {
+                    if (pieces[newLine, newColumn].Color != PiecesColors.White)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+                //pegar peça a direita
+                if ((this.Line + 1 == newLine) && (this.Column - 1 == newColumn))
+                {
+                    if (pieces[newLine, newColumn].Color != PiecesColors.White)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+                return false;
             }
-            else if (this.Color == Util.PiecesColors.Black)
+            else if (this.Color == PiecesColors.Black)
             {
-                if (pieces[newLine - 1, newColumn] != null && pieces[newLine - 1, newColumn].Simbol != '-')
+                Console.WriteLine(this.Line);
+                Console.WriteLine(this.Column);
+                if ((this.Line -2 == newLine)&&(this.FirstMove == true))
                 {
-                    return false;
-                }
-                if (pieces[newLine - 1, newColumn + 1] != null && pieces[newLine - 1, newColumn + 1].Color != this.Color)
-                {
+                    if (pieces[newLine, newColumn].Color != PiecesColors.Null)
+                    {
+                        return false;
+                    }
+                    this.FirstMove = false;
                     return true;
                 }
-                return true;
+                if ((this.Line - 1 == newLine))
+                {
+                    if (pieces[newLine, newColumn].Color != PiecesColors.Null)
+                    {
+                        return false;
+                    }
+                    this.FirstMove = false;
+                    return true;
+                }
+                //pegar peça a direita
+                if ((this.Line - 1 == newLine) && (this.Column + 1 == newColumn))
+                {
+                    if (pieces[newLine, newColumn].Color != PiecesColors.Black)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+                //pegar peça a direita
+                if ((this.Line - 1 == newLine) && (this.Column - 1 == newColumn))
+                {
+                    if (pieces[newLine, newColumn].Color != PiecesColors.Black)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+
+                return false;
             }
             else
             {
