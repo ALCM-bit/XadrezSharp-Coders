@@ -81,6 +81,15 @@ namespace Xadrez.Models.Pieces
             //Direita a cima
             if ((newLine != this.Line && newLine < this.Line) && (newColumn > this.Column))
             {
+                for (int i = this.Line - 1; i >= newLine + 1; i--)
+                {
+                    for (int j = this.Column + 1; j <= newColumn - 1; j++)
+                    {
+                        if (pieces[i, j].Color != PiecesColors.Null)
+                            return false;
+                    }
+
+                }
                 if (pieces[newLine, newColumn].Color != this.Color)
                 {
                     return true;
@@ -90,6 +99,16 @@ namespace Xadrez.Models.Pieces
             //Esquerda a cima
             if ((newLine != this.Line && newLine < this.Line) && (newColumn < this.Column))
             {
+
+                for (int i = this.Line - 1; i >= newLine + 1; i--)
+                {
+                    for (int j = this.Column - 1; j >= newColumn - 1; j++)
+                    {
+                        if (pieces[i, j].Color != PiecesColors.Null)
+                            return false;
+                    }
+
+                }
                 if (pieces[newLine, newColumn].Color != this.Color)
                 {
                     return true;
@@ -100,6 +119,15 @@ namespace Xadrez.Models.Pieces
             //Direita abaixo
             if ((newLine != this.Line && newLine > this.Line) && (newColumn > this.Column))
             {
+                for (int i = this.Line + 1; i <= newLine - 1; i++)
+                {
+                    for (int j = this.Column + 1; j >= newColumn - 1; j++)
+                    {
+                        if (pieces[i, j].Color != PiecesColors.Null)
+                            return false;
+                    }
+
+                }
                 if (pieces[newLine, newColumn].Color != this.Color)
                 {
                     return true;
@@ -110,6 +138,15 @@ namespace Xadrez.Models.Pieces
             //Esquerda abaixo
             if ((newLine != this.Line && newLine > this.Line) && (newColumn < this.Column))
             {
+                for (int i = this.Line + 1; i <= newLine - 1; i++)
+                {
+                    for (int j = this.Column - 1; j >= newColumn + 1; j--)
+                    {
+                        if (pieces[i, j].Color != PiecesColors.Null)
+                            return false;
+                    }
+
+                }
                 if (pieces[newLine, newColumn].Color != this.Color)
                 {
                     return true;
