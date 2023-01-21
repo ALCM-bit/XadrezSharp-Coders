@@ -2,6 +2,7 @@
 using Xadrez.Models;
 using Xadrez.Models.Pieces;
 using Xadrez.Services;
+using Xadrez.Services.JsonSystem;
 
 namespace Xadez
 {
@@ -9,7 +10,7 @@ namespace Xadez
     {
         public static void Main(string[] args)
         {
-            Sistem.StartCheesGame();
+            Xadrez.Services.System.Options();
         }
     }
 }

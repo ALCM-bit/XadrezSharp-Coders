@@ -10,6 +10,7 @@ namespace Xadrez.Models
     {
         public string Nome { get; set; }
         public int Points { get; set; }
+        public string Senha { get; set; }
 
         public Player(string nome) 
         { 

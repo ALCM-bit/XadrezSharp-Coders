@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using Xadrez.Models.Pieces;
+using Xadrez.Services;
+using Xadrez.Services.JsonSystem;
 using Xadrez.Util;
 
 namespace Xadrez.Models
@@ -14,15 +16,16 @@ namespace Xadrez.Models
     public class Board
     {
         private Piece[,] _board = new Piece[8,8];
-        private Player player1;
-        private Player player2;
+        private Player player1 = Services.System.Player1;
+        private Player player2 = Services.System.Player2;
         private int time  = 0;
+        public static List<Player> playerList;
 
-        public Board(string name1, string name2)
+        public static void PlayersListing()
         {
-            player1= new Player(name1);
-            player2= new Player(name2);
+            playerList = JsonReadWrite.JsonReader();
         }
+
         public void StartBoard()
         {
             for (int i = 0; i < 8; i++)
@@ -102,9 +105,17 @@ namespace Xadrez.Models
         public string ShowPlayer()
         {
             if (this.time % 2 == 0)
+            {
+                player1 = Services.System.Player1;
                 return player1.Nome;
+            }
+
             else
+            {
+                player2 = Services.System.Player2;
                 return player2.Nome;
+            }
+                
             
         }
         public void PlacePawns() 
