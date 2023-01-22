@@ -14,9 +14,13 @@ namespace Xadrez.Services
         {
             List<Player> list = new List<Player>();
             list = JsonReadWrite.JsonReader();
+            var checkedExistence = list.FindIndex(user => user.Nome == player.Nome);
+            if (checkedExistence == -1)
+            {
+                list.Add(player);
+                JsonReadWrite.JsonWriter(list);
+            }
             
-            list.Add(player);
-            JsonReadWrite.JsonWriter(list);
         }
 
     }

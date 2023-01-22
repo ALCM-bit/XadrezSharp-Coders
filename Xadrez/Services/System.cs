@@ -25,18 +25,37 @@ namespace Xadrez.Services
                 Console.WriteLine("1 - Cadastrar novo usuário");
                 Console.WriteLine("2 - Logar e Iniciar novo jogo");
                 Console.Write("Digite aqui: ");
-                option = int.Parse(Console.ReadLine());
+                try
+                {
+                    option = int.Parse(Console.ReadLine());
+                }
+                catch
+                {
+                    Console.WriteLine("Opção Inválida");
+                    Console.ReadKey();
+                }
+                
                 switch (option)
                 {
                     case 1:
-                        Console.Write("Digite nome: ");
-                        string name = Console.ReadLine();
-                        Console.Write("Digite sua senha: ");
-                        string senha = Console.ReadLine();
-                        Player newPlayer = new Player(name);
-                        newPlayer.Senha = senha;
-                        PlayersLogin.AddNewPlayers(newPlayer);
-                        break;
+                        try
+                        {
+                            Console.Write("Digite nome: ");
+                            string name = Console.ReadLine();
+                            Console.Write("Digite sua senha: ");
+                            string senha = Console.ReadLine();
+                            Player newPlayer = new Player(name);
+                            newPlayer.Senha = senha;
+                            PlayersLogin.AddNewPlayers(newPlayer);
+                            break;
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Opção Inválida");
+                            Console.ReadKey();
+                            return;
+                        }
+                        
                     case 2:
                         Console.WriteLine("Iniciando o jogo ...");
                         StartCheesGame();
@@ -58,14 +77,25 @@ namespace Xadrez.Services
             int option = 1;
             while (option !=0)
             {
-                board.ShowBoard();
-                Console.WriteLine($"Vez do: {board.ShowPlayer()}");
-                Console.Write("Digite a Linha: ");
-                int Line = int.Parse(Console.ReadLine());
-                Console.Write("Digite a Coluna: ");
-                int Column = int.Parse(Console.ReadLine());
-                board.MovePiece(Line, Column, board.SelectPiece(Line, Column));
-                board.ShowBoard();
+                
+                try
+                {
+                    board.ShowBoard();
+                    Console.WriteLine($"Vez do: {board.ShowPlayer()}");
+                    Console.Write("Digite a Linha: ");
+                    int Line = int.Parse(Console.ReadLine());
+                    Console.Write("Digite a Coluna: ");
+                    int Column = int.Parse(Console.ReadLine());
+                    board.MovePiece(Line, Column, board.SelectPiece(Line, Column));
+                    board.ShowBoard();
+                }
+                catch
+                {
+                    Console.WriteLine("Operação Inválida");
+                    Console.ReadKey();
+                    return;
+                }
+                
             }
             
             
@@ -76,16 +106,26 @@ namespace Xadrez.Services
             
             while (check1 != true)
             {
-                Console.Write("Digite o Nome do jogador1: ");
-                string name1 = Console.ReadLine();
-                Console.Write("Digite a senha do jogador1: ");
-                string password1 = Console.ReadLine();
+                try
+                {
+                    Console.Write("Digite o Nome do jogador1: ");
+                    string name1 = Console.ReadLine();
+                    Console.Write("Digite a senha do jogador1: ");
+                    string password1 = Console.ReadLine();
+
+                    Console.Write("Digite o Nome do jogador2: ");
+                    string name2 = Console.ReadLine();
+                    Console.Write("Digite a senha do jogador2: ");
+                    string password2 = Console.ReadLine();
+                    check1 = LoginSystem(name1, password1, name2, password2);
+                }
+                catch
+                {
+                    Console.WriteLine("Valor Inválido");
+                    Console.ReadKey();
+                    return;
+                }
                 
-                Console.Write("Digite o Nome do jogador2: ");
-                string name2 = Console.ReadLine();
-                Console.Write("Digite a senha do jogador2: ");
-                string password2 = Console.ReadLine();
-                check1 = LoginSystem(name1, password1, name2, password2);
             }
         }
 
