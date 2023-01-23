@@ -15,6 +15,7 @@ namespace Xadrez.Services
         public static void Options()
         {
             int option = 5;
+            Console.Clear();
             Console.WriteLine("... Bem-vindo...");
             Console.WriteLine("Aperte ENTER para continuar");
             Console.ReadKey();
