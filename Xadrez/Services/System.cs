@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Xadrez.Models;
+using Xadrez.Services.JsonSystem;
 
 namespace Xadrez.Services
 {
@@ -25,6 +26,7 @@ namespace Xadrez.Services
                 Console.WriteLine("Deseja:");
                 Console.WriteLine("1 - Cadastrar novo usuário");
                 Console.WriteLine("2 - Logar e Iniciar novo jogo");
+                Console.WriteLine("3 - Para ver jogadores e Pontuações");
                 Console.Write("Digite aqui: ");
                 try
                 {
@@ -60,6 +62,19 @@ namespace Xadrez.Services
                     case 2:
                         Console.WriteLine("Iniciando o jogo ...");
                         StartCheesGame();
+                        break;
+                    case 3:
+                        Console.WriteLine("Ranking: ");
+                        List<Player> list = new List<Player>();
+                        list = JsonReadWrite.JsonReader();
+                        foreach (var item in list)
+                        {
+                            Console.WriteLine("Nome: " + item.Nome);
+                            Console.WriteLine("Pontuação: " + item.Points);
+                            Console.WriteLine("-----------------------------");
+                        }
+                        Console.WriteLine("Aperte ENTER para sair...");
+                        Console.ReadKey();
                         break;
                     default:
                         Console.WriteLine("Opção inválida");
