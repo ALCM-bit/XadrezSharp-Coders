@@ -69,6 +69,21 @@ namespace Xadrez.Models
               Console.WriteLine();
             }
             Console.ForegroundColor = ConsoleColor.White;
+            bool checkVictory = WinCheck.CheckKingsExistence(_board);
+            if (checkVictory == false)
+            {
+                if (ShowPlayer() == player1.Nome)
+                {
+                    Console.WriteLine($"Vitória de {player2.Nome}");
+                }
+                else
+                {
+                    Console.WriteLine($"Vitória de {player1.Nome}");
+                }
+                Console.WriteLine("Aperte ENTER para voltar ao menu ...");
+                Console.ReadKey();
+                Xadrez.Services.System.Options();
+            }
         }
         public Piece SelectPiece(int line, int column)
         {
@@ -115,7 +130,6 @@ namespace Xadrez.Models
                 player2 = Services.System.Player2;
                 return player2.Nome;
             }
-                
             
         }
         public void PlacePawns() 
