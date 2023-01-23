@@ -75,11 +75,16 @@ namespace Xadrez.Models
                 if (ShowPlayer() == player1.Nome)
                 {
                     Console.WriteLine($"Vitória de {player2.Nome}");
+                    var index = playerList.FindIndex(player => player.Nome == player2.Nome);
+                    playerList[index].Points++;
                 }
                 else
                 {
                     Console.WriteLine($"Vitória de {player1.Nome}");
+                    var index = playerList.FindIndex(player => player.Nome == player1.Nome);
+                    playerList[index].Points++;
                 }
+                JsonReadWrite.JsonWriter(playerList);
                 Console.WriteLine("Aperte ENTER para voltar ao menu ...");
                 Console.ReadKey();
                 Xadrez.Services.System.Options();
@@ -197,7 +202,7 @@ namespace Xadrez.Models
         public void PlaceKings()
         {
             //White
-            _board[0, 4] = new Pieces.King(0, 4, Util.PiecesColors.White);
+            //_board[0, 4] = new Pieces.King(0, 4, Util.PiecesColors.White);
 
             //Black
             _board[7, 4] = new Pieces.King(7, 4, Util.PiecesColors.Black);
