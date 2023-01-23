@@ -202,7 +202,7 @@ namespace Xadrez.Models
         public void PlaceKings()
         {
             //White
-            //_board[0, 4] = new Pieces.King(0, 4, Util.PiecesColors.White);
+            _board[0, 4] = new Pieces.King(0, 4, Util.PiecesColors.White);
 
             //Black
             _board[7, 4] = new Pieces.King(7, 4, Util.PiecesColors.Black);
