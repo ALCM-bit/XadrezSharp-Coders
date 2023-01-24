@@ -21,7 +21,7 @@ namespace Xadrez.Models.Pieces
 
             if (this.Color == PiecesColors.White)
             {
-                if ((this.Line +2 == newLine) && (this.FirstMove == true))
+                if ((this.Line +2 == newLine) && (this.FirstMove == true) && (this.Column == newColumn))
                 {
                     if (pieces[newLine, newColumn].Color != PiecesColors.Null)
                     {
@@ -30,7 +30,7 @@ namespace Xadrez.Models.Pieces
                     this.FirstMove = false;
                     return true;
                 }
-                if ((this.Line + 1 == newLine))
+                if ((this.Line + 1 == newLine) && (this.Column == newColumn))
                 {
                     if (pieces[newLine, newColumn].Color != PiecesColors.Null)
                     {
@@ -42,7 +42,7 @@ namespace Xadrez.Models.Pieces
                 //pegar peça a direita
                 if ((this.Line + 1 == newLine) && (this.Column + 1 == newColumn))
                 {
-                    if (pieces[newLine, newColumn].Color != PiecesColors.White)
+                    if (pieces[newLine, newColumn].Color != PiecesColors.White && pieces[newLine, newColumn].Color != PiecesColors.Null)
                     {
                         return true;
                     }
@@ -51,7 +51,7 @@ namespace Xadrez.Models.Pieces
                 //pegar peça a direita
                 if ((this.Line + 1 == newLine) && (this.Column - 1 == newColumn))
                 {
-                    if (pieces[newLine, newColumn].Color != PiecesColors.White)
+                    if (pieces[newLine, newColumn].Color != PiecesColors.White && pieces[newLine, newColumn].Color != PiecesColors.Null)
                     {
                         return true;
                     }
@@ -61,9 +61,7 @@ namespace Xadrez.Models.Pieces
             }
             else if (this.Color == PiecesColors.Black)
             {
-                Console.WriteLine(this.Line);
-                Console.WriteLine(this.Column);
-                if ((this.Line -2 == newLine)&&(this.FirstMove == true))
+                if ((this.Line -2 == newLine)&&(this.FirstMove == true)&&(this.Column == newColumn))
                 {
                     if (pieces[newLine, newColumn].Color != PiecesColors.Null)
                     {
@@ -72,7 +70,7 @@ namespace Xadrez.Models.Pieces
                     this.FirstMove = false;
                     return true;
                 }
-                if ((this.Line - 1 == newLine))
+                if ((this.Line - 1 == newLine) && (this.Column == newColumn))
                 {
                     if (pieces[newLine, newColumn].Color != PiecesColors.Null)
                     {
@@ -84,7 +82,7 @@ namespace Xadrez.Models.Pieces
                 //pegar peça a direita
                 if ((this.Line - 1 == newLine) && (this.Column + 1 == newColumn))
                 {
-                    if (pieces[newLine, newColumn].Color != PiecesColors.Black)
+                    if (pieces[newLine, newColumn].Color != PiecesColors.Black && pieces[newLine, newColumn].Color != PiecesColors.Null)
                     {
                         return true;
                     }
@@ -93,7 +91,7 @@ namespace Xadrez.Models.Pieces
                 //pegar peça a direita
                 if ((this.Line - 1 == newLine) && (this.Column - 1 == newColumn))
                 {
-                    if (pieces[newLine, newColumn].Color != PiecesColors.Black)
+                    if (pieces[newLine, newColumn].Color != PiecesColors.Black && pieces[newLine, newColumn].Color != PiecesColors.Null)
                     {
                         return true;
                     }
